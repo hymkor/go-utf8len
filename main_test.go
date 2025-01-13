@@ -8,11 +8,20 @@ import (
 	"github.com/hymkor/go-utf8len"
 )
 
+var source = [0x110000]string{}
+
+func init() {
+	//println("setup test table")
+	for c := range source {
+		source[c] = fmt.Sprintf("%c", c)
+	}
+	//println("done")
+}
+
 func TestFromFirstByte(t *testing.T) {
-	for c := '\u0020'; c < '\U0010FFFF'; c++ {
-		source := fmt.Sprintf("%c", c)
-		_, expect := utf8.DecodeRuneInString(source)
-		result := utf8len.FromFirstByte(source[0])
+	for _, s := range source {
+		_, expect := utf8.DecodeRuneInString(s)
+		result := utf8len.FromFirstByte(s[0])
 		if expect != result {
 			t.Fatalf("expect %v,but %v for %v", expect, result, source)
 		}
@@ -22,14 +31,12 @@ func TestFromFirstByte(t *testing.T) {
 
 func BenchmarkFromFirstByte(b *testing.B) {
 	for c := 0; c < b.N; c++ {
-		source := fmt.Sprintf("%c", c)
-		utf8len.FromFirstByte(source[0])
+		utf8len.FromFirstByte(source[c%len(source)][0])
 	}
 }
 
 func BenchmarkDecodeRuneInString(b *testing.B) {
 	for c := 0; c < b.N; c++ {
-		source := fmt.Sprintf("%c", c)
-		_, _ = utf8.DecodeRuneInString(source)
+		_, _ = utf8.DecodeRuneInString(source[c%len(source)])
 	}
 }
