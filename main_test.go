@@ -23,7 +23,7 @@ func TestFromFirstByte(t *testing.T) {
 		_, expect := utf8.DecodeRuneInString(s)
 		result := utf8len.FromFirstByte(s[0])
 		if expect != result {
-			t.Fatalf("expect %v,but %v for %v", expect, result, source)
+			t.Fatalf("expect %#v,but %#v for %#v", expect, result, s)
 		}
 		// println(source,expect,result)
 	}
