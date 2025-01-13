@@ -39,7 +39,7 @@ func TestFromFirstByte(t *testing.T) {
         _, expect := utf8.DecodeRuneInString(s)
         result := utf8len.FromFirstByte(s[0])
         if expect != result {
-            t.Fatalf("expect %v,but %v for %v", expect, result, source)
+            t.Fatalf("expect %#v,but %#v for %#v", expect, result, s)
         }
         // println(source,expect,result)
     }
@@ -66,8 +66,8 @@ goos: windows
 goarch: amd64
 pkg: github.com/hymkor/go-utf8len
 cpu: Intel(R) Core(TM) i5-6500T CPU @ 2.50GHz
-BenchmarkFromFirstByte-4        	352504692	         3.474 ns/op	       0 B/op	       0 allocs/op
-BenchmarkDecodeRuneInString-4   	132296904	         9.028 ns/op	       0 B/op	       0 allocs/op
+BenchmarkFromFirstByte-4        	378031695	         3.256 ns/op	       0 B/op	       0 allocs/op
+BenchmarkDecodeRuneInString-4   	138281330	         8.378 ns/op	       0 B/op	       0 allocs/op
 PASS
-ok  	github.com/hymkor/go-utf8len	4.198s
+ok  	github.com/hymkor/go-utf8len	4.058s
 ```
