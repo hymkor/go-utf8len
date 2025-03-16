@@ -5,11 +5,11 @@ utf8len.FromFirstByte
 func FromFirstByte(c byte) int
 ```
 
-A function that calculates the byte length of the first UTF-8 character using only the first byte.
+A function that determines the byte length of the first UTF-8 character based on its initial byte.
 
-This approach is slightly faster than Go's standard utf8.DecodeRuneInString, as it does not compute the Unicode code point of the character.
+This approach is more efficient than Go's standard `utf8.DecodeRuneInString` because it skips computing the Unicode code point.
 
-If an invalid value is provided as the first byte of a UTF-8 sequence, the function returns zero.
+If the provided byte is not a valid starting byte for a UTF-8 sequence, the function returns zero.
 
 **main_test.go**
 
