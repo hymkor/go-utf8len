@@ -19,6 +19,9 @@ var table = []int{
 	0,
 }
 
+// FromFirstByte determines the byte length of the first UTF-8 character
+// based on its initial byte. If the provided byte is not a valid starting
+// byte for a UTF-8 sequence, the function returns zero.
 func FromFirstByte(c byte) int {
 	return table[c>>3]
 }
