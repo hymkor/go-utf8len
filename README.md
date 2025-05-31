@@ -1,6 +1,9 @@
 utf8len.FromFirstByte
 =====================
 
+[![Go Reference](https://pkg.go.dev/badge/github.com/hymkor/go-utf8len.svg)](https://pkg.go.dev/github.com/hymkor/go-utf8len)
+[![Go Test](https://github.com/hymkor/go-utf8len/actions/workflows/go.yml/badge.svg)](https://github.com/hymkor/go-utf8len/actions/workflows/go.yml)
+
 ```go
 func FromFirstByte(c byte) int
 ```
